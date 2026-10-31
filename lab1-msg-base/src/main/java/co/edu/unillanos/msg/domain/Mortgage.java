@@ -14,7 +14,7 @@ public final class Mortgage {
 
     // TODO (RN4): declare aquí, una sola vez y con nombre, el porcentaje máximo
     //             del ingreso que aporta la pareja (28 %).
-
+    
     private final String mortgageNumber;
     private final BigDecimal weeklyPrincipalAndInterest;
     private final BigDecimal annualPropertyTax;
@@ -31,9 +31,11 @@ public final class Mortgage {
         this.weeklyPrincipalAndInterest = Objects.requireNonNull(weeklyPrincipalAndInterest);
         this.annualPropertyTax = Objects.requireNonNull(annualPropertyTax);
         this.annualInsurancePremium = Objects.requireNonNull(annualInsurancePremium);
-        this.coupleWeeklyIncome = Objects.requireNonNull(coupleWeeklyIncome);
-        // TODO (R6): rechazar con IllegalArgumentException un ingreso semanal
-        //            de la pareja menor o igual a cero.
+       this.coupleWeeklyIncome = Objects.requireNonNull(coupleWeeklyIncome);
+
+if (this.coupleWeeklyIncome.signum() <= 0) {
+    throw new IllegalArgumentException("El ingreso semanal debe ser mayor que cero");
+}
     }
 
     public String mortgageNumber() {
